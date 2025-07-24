@@ -14,13 +14,29 @@
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
     }
+    nav {
+      background-color: #111;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav a {
+      color: #00ffcc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00cc99;
+    }
     .katman {
       display: none;
       position: absolute;
-      top: 0;
+      top: 50px;
       left: 0;
       width: 100%;
-      min-height: 100vh;
+      min-height: calc(100vh - 50px);
       background-color: #f9f9f9;
       padding: 60px 20px;
     }
@@ -52,7 +68,7 @@
     .button-container button:hover {
       background-color: #0056b3;
     }
-    input[type="password"] {
+    input[type="password"], input[type="text"] {
       padding: 10px;
       font-size: 1rem;
       margin-top: 10px;
@@ -66,9 +82,41 @@
       color: #888;
       text-align: center;
     }
+    .yorum-alani {
+      margin-top: 40px;
+    }
+    .yorum-alani textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+    .yorumlar-listesi {
+      margin-top: 20px;
+      color: #eee;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .yorumlar-listesi p {
+      margin: 10px 0;
+      border-bottom: 1px solid #444;
+      padding-bottom: 5px;
+    }
   </style>
 </head>
 <body>
+  <!-- Navigasyon Menüsü -->
+  <nav>
+    <a href="#">Güncel Haberler</a>
+    <a href="#">Eski Olaylar</a>
+    <a href="#">Tartışmalar</a>
+    <a href="#">Bilgilendirme</a>
+  </nav>
+
   <!-- Ön Açıklama Katmanı -->
   <section id="onAcilama" class="katman aktif">
     <div class="container">
@@ -118,6 +166,15 @@
         Bu özel alana ulaşman, sorumluluğu kabul ettiğini gösterir.<br>
         Artık Manifesto-Global hareketinin gerçek parçasısın.
       </p>
+
+      <div class="yorum-alani">
+        <textarea id="yorumInput" placeholder="Düşünceni paylaş... (Küfür, hakaret, isyan içerikleri engellenir)"></textarea>
+        <div class="button-container">
+          <button onclick="yorumGonder()">Yorumu Gönder</button>
+        </div>
+        <div class="yorumlar-listesi" id="yorumlar"></div>
+      </div>
+
       <div class="dipnot">
         <strong>Beyan:</strong> Bu platform barışçıl dijital farkındalık ve bilinç inşasını amaçlar. Toplumu yasa dışı eylemlere veya ayrıştırıcı faaliyetlere teşvik etmez. Her birey kendi özgür iradesiyle bu yapının parçası olmayı seçer.
       </div>
@@ -141,6 +198,38 @@
         alert("Parola hatalı. Lütfen tekrar deneyin.");
       }
     }
+
+    function yorumGonder() {
+      const input = document.getElementById("yorumInput");
+      const yorum = input.value.trim();
+      const yasakli = ["küfür", "hakaret", "isyan", "terör", "salak", "aptal"];
+
+      if (yorum === "") return;
+      if (yasakli.some(kelime => yorum.toLowerCase().includes(kelime))) {
+        alert("Yorum uygun değil. Küfür, hakaret, isyan içerikleri engellenmiştir.");
+        return;
+      }
+
+      const yorumlar = JSON.parse(localStorage.getItem("yorumlar") || "[]");
+      yorumlar.push({ icerik: yorum, zaman: new Date().toLocaleString() });
+      localStorage.setItem("yorumlar", JSON.stringify(yorumlar));
+      input.value = "";
+      yorumlariGoster();
+    }
+
+    function yorumlariGoster() {
+      const yorumlar = JSON.parse(localStorage.getItem("yorumlar") || "[]");
+      const container = document.getElementById("yorumlar");
+      container.innerHTML = "";
+      yorumlar.forEach(y => {
+        const p = document.createElement("p");
+        p.textContent = `[${y.zaman}] ${y.icerik}`;
+        container.appendChild(p);
+      });
+    }
+
+    // İlk açılışta yorumları göster
+    window.onload = yorumlariGoster;
   </script>
 </body>
 </html>
