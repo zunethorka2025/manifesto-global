@@ -51,25 +51,55 @@
       margin: auto;
       font-size: 1.1rem;
     }
+    .button-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .button-container a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      text-decoration: none;
+      color: white;
+      background-color: #28a745;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .button-container a:hover {
+      background-color: #218838;
+    }
   </style>
 </head>
 <body>
   <nav>
     <ul>
-      <li><a href="#giris">🏠 Giriş</a></li>
-      <li><a href="#sozcu-katmani">📌 Sözcü Sistemine Git</a></li>
+      <li><a href="#bilgilendirme">📌 Bilgilendirme</a></li>
+      <li><a href="#sozcu-katmani">📣 Sözcü Sistemine Git</a></li>
     </ul>
   </nav>
 
-  <!-- GİRİŞ KATMANI BAŞLANGICI -->
-  <section id="giris">
+  <!-- BİLGİLENDİRME KATMANI BAŞLANGICI -->
+  <section id="bilgilendirme">
     <div class="container">
       <h1>Manifesto-Global</h1>
       <p>
         Burası sıradan bir web sayfası değil, bir çağrıdır.<br>
         Tüm dünyadan insanların; adalet, hakikat ve özgürlük için birleştiği dijital bir duraktır.<br>
-        <strong>Manifesto-Global</strong>, seninle başlar. Bizimle büyür.
+        <strong>Manifesto-Global</strong>, seninle başlar. Bizimle büyür.<br><br>
+        Devam etmeden önce bu projenin anlamını ve sorumluluğunu kabul ettiğini belirtmen gerekir.
       </p>
+      <div class="button-container">
+        <a href="#giris">Devam Et ve Kabul Ediyorum</a>
+      </div>
+    </div>
+  </section>
+  <!-- BİLGİLENDİRME KATMANI BİTİŞİ -->
+
+  <!-- GİRİŞ KATMANI BAŞLANGICI -->
+  <section id="giris">
+    <div class="container">
+      <h2>Giriş</h2>
+      <p>Şimdi projenin içeriğine girmeye hazırsın.</p>
     </div>
   </section>
   <!-- GİRİŞ KATMANI BİTİŞİ -->
@@ -93,4 +123,3 @@
   <!-- ÖZEL KATMAN: SÖZCÜ SİSTEMİ BİTİŞİ -->
 </body>
 </html>
-
