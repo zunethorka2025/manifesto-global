@@ -3,44 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manifesto-Global | Sessiz Çoğunluk Sözcü Sistemi</title>
+  <title>Manifesto-Global | Dijital Uyanış</title>
   <style>
-    html {
-      scroll-behavior: smooth;
+    * {
+      box-sizing: border-box;
     }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+    body, html {
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
     }
-    nav {
-      position: sticky;
+    .katman {
+      display: none;
+      position: absolute;
       top: 0;
-      z-index: 100;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ccc;
-    }
-    nav ul {
-      list-style-type: none;
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-      margin: 0;
-      gap: 2rem;
-    }
-    nav ul li a {
-      text-decoration: none;
-      font-weight: bold;
-      color: #333;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover {
-      color: #007BFF;
-    }
-    section {
-      padding: 60px 20px;
+      left: 0;
+      width: 100%;
       min-height: 100vh;
+      background-color: #f9f9f9;
+      padding: 60px 20px;
+    }
+    .katman.aktif {
+      display: block;
     }
     .container {
       background-color: #111;
@@ -55,71 +40,87 @@
       text-align: center;
       margin-top: 30px;
     }
-    .button-container a {
-      display: inline-block;
+    .button-container button {
       padding: 10px 20px;
-      margin: 5px;
-      text-decoration: none;
       color: white;
-      background-color: #28a745;
+      background-color: #007bff;
+      border: none;
       border-radius: 5px;
-      transition: background-color 0.3s;
+      font-size: 1rem;
+      cursor: pointer;
     }
-    .button-container a:hover {
-      background-color: #218838;
+    .button-container button:hover {
+      background-color: #0056b3;
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 1rem;
+      margin-top: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="#bilgilendirme">📌 Bilgilendirme</a></li>
-      <li><a href="#sozcu-katmani">📣 Sözcü Sistemine Git</a></li>
-    </ul>
-  </nav>
-
-  <!-- BİLGİLENDİRME KATMANI BAŞLANGICI -->
-  <section id="bilgilendirme">
+  <!-- Ön Açıklama Katmanı -->
+  <section id="onAcilama" class="katman aktif">
     <div class="container">
-      <h1>Manifesto-Global</h1>
+      <h1>Manifesto-Global'e Hoş Geldin</h1>
       <p>
-        Burası sıradan bir web sayfası değil, bir çağrıdır.<br>
-        Tüm dünyadan insanların; adalet, hakikat ve özgürlük için birleştiği dijital bir duraktır.<br>
-        <strong>Manifesto-Global</strong>, seninle başlar. Bizimle büyür.<br><br>
-        Devam etmeden önce bu projenin anlamını ve sorumluluğunu kabul ettiğini belirtmen gerekir.
+        Bu platform sıradan bir sayfa değil, küresel bir uyanışın ilk adımıdır.<br>
+        Dijitalde birleşen sesler, adalet ve özgürlük için yankılanacak.<br><br>
+        Eğer bu yolculuğa devam etmek istiyorsan, sonraki adıma geçebilirsin.
       </p>
       <div class="button-container">
-        <a href="#giris">Devam Et ve Kabul Ediyorum</a>
+        <button onclick="gecisYap('bilgilendirme')">Devam Et</button>
       </div>
     </div>
   </section>
-  <!-- BİLGİLENDİRME KATMANI BİTİŞİ -->
 
-  <!-- GİRİŞ KATMANI BAŞLANGICI -->
-  <section id="giris">
+  <!-- Bilgilendirme Katmanı -->
+  <section id="bilgilendirme" class="katman">
+    <div class="container">
+      <h2>Bilgilendirme</h2>
+      <p>
+        Bu proje; bilinç, sorumluluk ve saygı temelleri üzerine kurulmuştur.<br>
+        Gireceğin bilgiler kayıt altına alınmaz, ancak sunduğumuz sorumluluğu kabul ettiğini varsayar.
+      </p>
+      <div class="button-container">
+        <button onclick="gecisYap('giris')">Kabul Ediyor ve Devam Ediyorum</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Giriş Parola Katmanı -->
+  <section id="giris" class="katman">
     <div class="container">
       <h2>Giriş</h2>
-      <p>Şimdi projenin içeriğine girmeye hazırsın.</p>
+      <p>Lütfen devam etmek için parolanı gir:</p>
+      <input type="password" id="parola" placeholder="Parola">
+      <div class="button-container">
+        <button onclick="parolaKontrol()">Giriş Yap</button>
+      </div>
     </div>
   </section>
-  <!-- GİRİŞ KATMANI BİTİŞİ -->
 
-  <!-- ÖZEL KATMAN: SÖZCÜ SİSTEMİ BAŞLANGICI -->
-  <section id="sozcu-katmani">
-    <div class="container">
-      <h2>📣 Sessiz Çoğunluğun Sözcüleri</h2>
-      <p>
-        Bu özel bölüm, dijital uyanışın fiziksel karşılığını oluşturmak üzere hazırlanmıştır. 
-        Kayıtlı ve onaylı sözcüler, kendi bölgelerinde halkın sesi olacak.
-      </p>
-      <ul>
-        <li><strong>Bölgesel Görevler:</strong> Yerel farkındalık etkinlikleri düzenlemek</li>
-        <li><strong>İletişim Noktası:</strong> Diğer sözcülerle bağlantı kurmak</li>
-        <li><strong>Raporlama:</strong> Konsey’e durum bildirileri sunmak</li>
-      </ul>
-      <p><em>Not: Bu katmana sadece onaylanmış bireyler erişebilir.</em></p>
-    </div>
-  </section>
-  <!-- ÖZEL KATMAN: SÖZCÜ SİSTEMİ BİTİŞİ -->
+  <!-- Script -->
+  <script>
+    function gecisYap(katmanID) {
+      const katmanlar = document.querySelectorAll('.katman');
+      katmanlar.forEach(k => k.classList.remove('aktif'));
+      document.getElementById(katmanID).classList.add('aktif');
+    }
+
+    function parolaKontrol() {
+      const parola = document.getElementById('parola').value;
+      if (parola === "manifesto2025") {
+        alert("Giriş başarılı. İçeriğe yönlendiriliyorsun.");
+        // Buraya yönlendirme veya yeni katman açılabilir
+      } else {
+        alert("Parola hatalı. Lütfen tekrar deneyin.");
+      }
+    }
+  </script>
 </body>
 </html>
