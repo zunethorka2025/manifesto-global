@@ -1,73 +1,96 @@
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 1rem;
-    background-color: #f2f2f2;
-    padding: 1rem;
-    border-radius: 8px;
-  }
-  nav ul li a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-  }
-  nav ul li a:hover {
-    color: #007BFF;
-  }
-  .container {
-    margin-top: 2rem;
-    padding: 20px;
-    background-color: #111;
-    color: #00ffcc;
-    border-radius: 10px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.1rem;
-  }
-</style>
-
-<nav>
-  <ul>
-    <li><a href="#giris">🏠 Giriş</a></li>
-    <li><a href="#sozcu-katmani">📌 Sözcü Sistemine Git</a></li>
-  </ul>
-</nav>
-
-<!-- GİRİŞ KATMANI BAŞLANGICI -->
-<section id="giris">
-  <div class="container">
-    <h1>Manifesto-Global</h1>
-    <p>
-      Burası sıradan bir web sayfası değil, bir çağrıdır.<br>
-      Tüm dünyadan insanların; adalet, hakikat ve özgürlük için birleştiği dijital bir duraktır.<br>
-      <strong>Manifesto-Global</strong>, seninle başlar. Bizimle büyür.
-    </p>
-  </div>
-</section>
-<!-- GİRİŞ KATMANI BİTİŞİ -->
-
-<!-- ÖZEL KATMAN: SÖZCÜ SİSTEMİ BAŞLANGICI -->
-<section id="sozcu-katmani">
-  <div class="container">
-    <h2>📣 Sessiz Çoğunluğun Sözcüleri</h2>
-    <p>
-      Bu özel bölüm, dijital uyanışın fiziksel karşılığını oluşturmak üzere hazırlanmıştır. 
-      Kayıtlı ve onaylı sözcüler, kendi bölgelerinde halkın sesi olacak.
-    </p>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manifesto-Global | Sessiz Çoğunluk Sözcü Sistemi</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ccc;
+    }
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      margin: 0;
+      gap: 2rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #007BFF;
+    }
+    section {
+      padding: 60px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: #111;
+      color: #00ffcc;
+      border-radius: 10px;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
     <ul>
-      <li><strong>Bölgesel Görevler:</strong> Yerel farkındalık etkinlikleri düzenlemek</li>
-      <li><strong>İletişim Noktası:</strong> Diğer sözcülerle bağlantı kurmak</li>
-      <li><strong>Raporlama:</strong> Konsey’e durum bildirileri sunmak</li>
+      <li><a href="#giris">🏠 Giriş</a></li>
+      <li><a href="#sozcu-katmani">📌 Sözcü Sistemine Git</a></li>
     </ul>
-    <p><em>Not: Bu katmana sadece onaylanmış bireyler erişebilir.</em></p>
-  </div>
-</section>
-<!-- ÖZEL KATMAN: SÖZCÜ SİSTEMİ BİTİŞİ -->
+  </nav>
+
+  <!-- GİRİŞ KATMANI BAŞLANGICI -->
+  <section id="giris">
+    <div class="container">
+      <h1>Manifesto-Global</h1>
+      <p>
+        Burası sıradan bir web sayfası değil, bir çağrıdır.<br>
+        Tüm dünyadan insanların; adalet, hakikat ve özgürlük için birleştiği dijital bir duraktır.<br>
+        <strong>Manifesto-Global</strong>, seninle başlar. Bizimle büyür.
+      </p>
+    </div>
+  </section>
+  <!-- GİRİŞ KATMANI BİTİŞİ -->
+
+  <!-- ÖZEL KATMAN: SÖZCÜ SİSTEMİ BAŞLANGICI -->
+  <section id="sozcu-katmani">
+    <div class="container">
+      <h2>📣 Sessiz Çoğunluğun Sözcüleri</h2>
+      <p>
+        Bu özel bölüm, dijital uyanışın fiziksel karşılığını oluşturmak üzere hazırlanmıştır. 
+        Kayıtlı ve onaylı sözcüler, kendi bölgelerinde halkın sesi olacak.
+      </p>
+      <ul>
+        <li><strong>Bölgesel Görevler:</strong> Yerel farkındalık etkinlikleri düzenlemek</li>
+        <li><strong>İletişim Noktası:</strong> Diğer sözcülerle bağlantı kurmak</li>
+        <li><strong>Raporlama:</strong> Konsey’e durum bildirileri sunmak</li>
+      </ul>
+      <p><em>Not: Bu katmana sadece onaylanmış bireyler erişebilir.</em></p>
+    </div>
+  </section>
+  <!-- ÖZEL KATMAN: SÖZCÜ SİSTEMİ BİTİŞİ -->
+</body>
+</html>
+
