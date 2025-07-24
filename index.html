@@ -104,6 +104,17 @@
     </div>
   </section>
 
+  <!-- İçerik Katmanı -->
+  <section id="icerik" class="katman">
+    <div class="container">
+      <h2>Hoş Geldin, Kazanılmış Birey</h2>
+      <p>
+        Bu özel alana ulaşman, sorumluluğu kabul ettiğini gösterir.<br>
+        Artık Manifesto-Global hareketinin gerçek parçasısın.
+      </p>
+    </div>
+  </section>
+
   <!-- Script -->
   <script>
     function gecisYap(katmanID) {
@@ -116,7 +127,7 @@
       const parola = document.getElementById('parola').value;
       if (parola === "manifesto2025") {
         alert("Giriş başarılı. İçeriğe yönlendiriliyorsun.");
-        // Buraya yönlendirme veya yeni katman açılabilir
+        gecisYap('icerik');
       } else {
         alert("Parola hatalı. Lütfen tekrar deneyin.");
       }
