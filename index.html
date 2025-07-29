@@ -233,3 +233,23 @@
   </script>
 </body>
 </html>
+<script>
+function login() {
+  const input = document.getElementById("password").value;
+  const correctPassword = "manifesto123"; // Şimdilik örnek
+
+  if (input === correctPassword) {
+    localStorage.setItem("manifestoUser", "true");
+    window.location.href = "kazanilmis.html"; // özel sayfan
+  } else {
+    alert("Yanlış parola!");
+  }
+}
+
+// Eğer zaten giriş yapmışsa doğrudan yönlendir
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("manifestoUser") === "true") {
+    window.location.href = "kazanilmis.html";
+  }
+});
+</script>
