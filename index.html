@@ -5,423 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manifesto-Global | Dijital Uyanış</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-    }
-    nav {
-      background-color: #111;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    nav a {
-      color: #00ffcc;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #00cc99;
-    }
-    .katman {
-      display: none;
-      position: absolute;
-      top: 50px;
-      left: 0;
-      width: 100%;
-      min-height: calc(100vh - 50px);
-      background-color: #f9f9f9;
-      padding: 60px 20px;
-    }
-    .katman.aktif {
-      display: block;
-    }
-    .container {
-      background-color: #111;
-      color: #00ffcc;
-      border-radius: 10px;
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-      font-size: 1.1rem;
-    }
-    .button-container {
-      text-align: center;
-      margin-top: 30px;
-    }
-    .button-container button {
-      padding: 10px 20px;
-      color: white;
-      background-color: #007bff;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    .button-container button:hover {
-      background-color: #0056b3;
-    }
-    input[type="password"], input[type="text"] {
-      padding: 10px;
-      font-size: 1rem;
-      margin-top: 10px;
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .dipnot {
-      margin-top: 50px;
-      font-size: 0.9rem;
-      color: #888;
-      text-align: center;
-    }
-    .yorum-alani {
-      margin-top: 40px;
-    }
-    .yorum-alani textarea {
-      width: 100%;
-      height: 100px;
-      padding: 10px;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      resize: none;
-    }
-    .yorumlar-listesi {
-      margin-top: 20px;
-      color: #eee;
-      background-color: #222;
-      padding: 10px;
-      border-radius: 5px;
-    }
-    .yorumlar-listesi p {
-      margin: 10px 0;
-      border-bottom: 1px solid #444;
-      padding-bottom: 5px;
-    }
+    *{box-sizing:border-box;}
+    body,html{margin:0;padding:0;font-family:Arial,sans-serif;background:#f9f9f9;}
+    nav{background:#111;padding:10px 20px;display:flex;justify-content:center;gap:20px;position:relative;}
+    nav a{color:#00ffcc;text-decoration:none;font-weight:bold;transition:.3s;}
+    nav a:hover{color:#00cc99;}
+
+    .katman{display:none;position:absolute;top:50px;left:0;width:100%;min-height:calc(100vh - 50px);
+      background:#f9f9f9;padding:60px 20px;opacity:0;transition:.5s ease;}
+    .katman.aktif{display:block;opacity:1;}
+
+    .container{background:#111;color:#00ffcc;border-radius:10px;padding:2rem;max-width:900px;margin:auto;font-size:1.1rem;}
+    .button-container{text-align:center;margin-top:30px;}
+    .button-container button{padding:10px 20px;color:#fff;background:#007bff;border:none;border-radius:5px;font-size:1rem;cursor:pointer;}
+    .button-container button:hover{background:#0056b3;}
+
+    input[type="password"],textarea,#isimInput{width:100%;padding:10px;font-size:1rem;margin-top:10px;border:1px solid #ccc;border-radius:5px;}
+    .yorumlar-listesi{margin-top:20px;color:#eee;background:#222;padding:10px;border-radius:5px;}
+    .yorumlar-listesi p{margin:10px 0;border-bottom:1px solid #444;padding-bottom:5px;}
+    .yorumlar-listesi p strong{color:#00ffcc;}
+
+    .dipnot{margin-top:50px;font-size:0.9rem;color:#888;text-align:center;}
+
+    #langPanel{position:absolute;top:8px;right:20px;z-index:1000;}
+    #langPanel button{background:#00ffcc;border:1px solid #008866;color:#000;padding:6px 10px;margin-left:3px;font-weight:bold;border-radius:3px;cursor:pointer;transition:.3s;}
+    #langPanel button:hover{background:#00cc99;color:#fff;}
   </style>
 </head>
 <body>
-  <!-- Navigasyon Menüsü -->
-  <nav>
-    <a href="#">Güncel Haberler</a>
-    <a href="#">Eski Olaylar</a>
-    <a href="#">Tartışmalar</a>
-    <a href="#">Bilgilendirme</a>
-  </nav>
 
-  <!-- Ön Açıklama Katmanı -->
-  <section id="onAcilama" class="katman aktif">
-    <div class="container">
-      <h1>Manifesto-Global'e Hoş Geldin</h1>
-      <p>
-        Bu platform sıradan bir sayfa değil, küresel bir uyanışın ilk adımıdır.<br>
-        Dijitalde birleşen sesler, adalet ve özgürlük için yankılanacak.<br><br>
-        Eğer bu yolculuğa devam etmek istiyorsan, sonraki adıma geçebilirsin.
-      </p>
-      <div class="button-container">
-        <button onclick="gecisYap('bilgilendirme')">Devam Et</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bilgilendirme Katmanı -->
-  <section id="bilgilendirme" class="katman">
-    <div class="container">
-      <h2>Bilgilendirme</h2>
-      <p>
-        Bu proje; bilinç, sorumluluk ve saygı temelleri üzerine kurulmuştur.<br>
-        Gireceğin bilgiler kayıt altına alınmaz, ancak sunduğumuz sorumluluğu kabul ettiğini varsayar.
-      </p>
-      <div class="button-container">
-        <button onclick="gecisYap('giris')">Kabul Ediyor ve Devam Ediyorum</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Giriş Parola Katmanı -->
-  <section id="giris" class="katman">
-    <div class="container">
-      <h2>Giriş</h2>
-      <p>Lütfen devam etmek için parolanı gir:</p>
-      <input type="password" id="parola" placeholder="Parola">
-      <div class="button-container">
-        <button onclick="parolaKontrol()">Giriş Yap</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- İçerik Katmanı -->
-  <section id="icerik" class="katman">
-    <div class="container">
-      <h2>Hoş Geldin, Kazanılmış Birey</h2>
-      <p>
-        Bu özel alana ulaşman, sorumluluğu kabul ettiğini gösterir.<br>
-        Artık Manifesto-Global hareketinin gerçek parçasısın.
-      </p>
-
-      <div class="yorum-alani">
-        <textarea id="yorumInput" placeholder="Düşünceni paylaş... (Küfür, hakaret, isyan içerikleri engellenir)"></textarea>
-        <div class="button-container">
-          <button onclick="yorumGonder()">Yorumu Gönder</button>
-        </div>
-        <div class="yorumlar-listesi" id="yorumlar"></div>
-      </div>
-
-      <div class="dipnot">
-        <strong>Beyan:</strong> Bu platform barışçıl dijital farkındalık ve bilinç inşasını amaçlar. Toplumu yasa dışı eylemlere veya ayrıştırıcı faaliyetlere teşvik etmez. Her birey kendi özgür iradesiyle bu yapının parçası olmayı seçer.
-      </div>
-    </div>
-  </section>
-
-  <!-- Script -->
-  <script>
-    function gecisYap(katmanID) {
-      const katmanlar = document.querySelectorAll('.katman');
-      katmanlar.forEach(k => k.classList.remove('aktif'));
-      document.getElementById(katmanID).classList.add('aktif');
-    }
-
-    function parolaKontrol() {
-      const parola = document.getElementById('parola').value;
-      if (parola === "manifesto2025") {
-        alert("Giriş başarılı. İçeriğe yönlendiriliyorsun.");
-        gecisYap('icerik');
-      } else {
-        alert("Parola hatalı. Lütfen tekrar deneyin.");
-      }
-    }
-
-    function yorumGonder() {
-      const input = document.getElementById("yorumInput");
-      const yorum = input.value.trim();
-      const yasakli = ["küfür", "hakaret", "isyan", "terör", "salak", "aptal"];
-
-      if (yorum === "") return;
-      if (yasakli.some(kelime => yorum.toLowerCase().includes(kelime))) {
-        alert("Yorum uygun değil. Küfür, hakaret, isyan içerikleri engellenmiştir.");
-        return;
-      }
-
-      const yorumlar = JSON.parse(localStorage.getItem("yorumlar") || "[]");
-      yorumlar.push({ icerik: yorum, zaman: new Date().toLocaleString() });
-      localStorage.setItem("yorumlar", JSON.stringify(yorumlar));
-      input.value = "";
-      yorumlariGoster();
-    }
-
-    function yorumlariGoster() {
-      const yorumlar = JSON.parse(localStorage.getItem("yorumlar") || "[]");
-      const container = document.getElementById("yorumlar");
-      container.innerHTML = "";
-      yorumlar.forEach(y => {
-        const p = document.createElement("p");
-        p.textContent = `[${y.zaman}] ${y.icerik}`;
-        container.appendChild(p);
-      });
-    }
-
-    // İlk açılışta yorumları göster
-    window.onload = yorumlariGoster;
-  </script>
-</body>
-</html>
-<script>
-function login() {
-  const input = document.getElementById("password").value;
-  const correctPassword = "manifesto123"; // Şimdilik örnek
-
-  if (input === correctPassword) {
-    localStorage.setItem("manifestoUser", "true");
-    window.location.href = "kazanilmis.html"; // özel sayfan
-  } else {
-    alert("Yanlış parola!");
-  }
-}
-
-// Eğer zaten giriş yapmışsa doğrudan yönlendir
-document.addEventListener("DOMContentLoaded", () => {
-  if (localStorage.getItem("manifestoUser") === "true") {
-    window.location.href = "kazanilmis.html";
-  }
-});
-</script>
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manifesto-Global | Dijital Uyanış</title>
-  <style>
-    * { box-sizing: border-box; }
-    body, html { margin: 0; padding: 0; font-family: Arial, sans-serif; background: #f9f9f9; }
-    nav { background: #111; padding: 10px 20px; display: flex; justify-content: center; gap: 20px; position: relative; }
-    nav a { color: #00ffcc; text-decoration: none; font-weight: bold; transition: color 0.3s; }
-    nav a:hover { color: #00cc99; }
-    .lang-switch { position: absolute; right: 10px; top: 10px; }
-    .lang-switch button { background: #00ffcc; border: none; padding: 5px 10px; cursor: pointer; font-weight: bold; }
-    .katman { display: none; position: absolute; top: 50px; left: 0; width: 100%; min-height: calc(100vh - 50px); background: #f9f9f9; padding: 60px 20px; opacity: 0; transition: opacity 0.6s ease; }
-    .katman.aktif { display: block; opacity: 1; }
-    .container { background: #111; color: #00ffcc; border-radius: 10px; padding: 2rem; max-width: 900px; margin: auto; font-size: 1.1rem; }
-    .button-container { text-align: center; margin-top: 30px; }
-    .button-container button { padding: 10px 20px; color: white; background: #007bff; border: none; border-radius: 5px; font-size: 1rem; cu
-<!-- 🔥 Dil Seçici Görünürlük Modülü -->
-<style>
-#langPanel {
-  position: fixed;
-  right: 15px;
-  top: 10px;
-  z-index: 9999;
-}
-#langPanel button {
-  background: #00ffcc;
-  border: none;
-  padding: 6px 10px;
-  margin-left: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 3px;
-}
-#langPanel button:hover {
-  background: #00cc99;
-}
-</style>
-
+<!-- 🔹 Dil Seçici (şimdilik görsel) -->
 <div id="langPanel">
-  <button onclick="setLanguage('tr')">TR</button>
-  <button onclick="setLanguage('en')">EN</button>
+  <button>TR</button>
+  <button>EN</button>
 </div>
-<style>
-#langPanel button {
-  background: #00ffcc;
-  border: none;
-  color: #000;
-  padding: 6px 10px;
-  font-weight: bold;
-  border-radius: 3px;
-  margin-left: 3px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-#langPanel button:hover {
-  background: #00cc99;
-  color: #fff;
-}
-</style>
+
+<!-- 🔹 Menü -->
+<nav>
+  <a href="#">Güncel Haberler</a>
+  <a href="#">Eski Olaylar</a>
+  <a href="#">Tartışmalar</a>
+  <a href="#">Bilgilendirme</a>
+</nav>
+
+<!-- 🔹 Katmanlar -->
+<section id="onAcilama" class="katman aktif">
+  <div class="container">
+    <h1>Manifesto-Global'e Hoş Geldin</h1>
+    <p>Bu platform sıradan bir sayfa değil, küresel bir uyanışın ilk adımıdır.<br>
+    Dijitalde birleşen sesler, adalet ve özgürlük için yankılanacak.<br><br>
+    Eğer bu yolculuğa devam etmek istiyorsan, sonraki adıma geçebilirsin.</p>
+    <div class="button-container"><button onclick="gecisYap('bilgilendirme')">Devam Et</button></div>
+  </div>
+</section>
+
+<section id="bilgilendirme" class="katman">
+  <div class="container">
+    <h2>Bilgilendirme</h2>
+    <p>Bu proje; bilinç, sorumluluk ve saygı temelleri üzerine kurulmuştur.<br>
+    Gireceğin bilgiler kayıt altına alınmaz, ancak sunduğumuz sorumluluğu kabul ettiğini varsayar.</p>
+    <div class="button-container"><button onclick="gecisYap('giris')">Kabul Ediyorum ve Devam Et</button></div>
+  </div>
+</section>
+
+<section id="giris" class="katman">
+  <div class="container">
+    <h2>Giriş</h2>
+    <p>Lütfen devam etmek için parolanı gir:</p>
+    <input type="password" id="parola" placeholder="Parola">
+    <div class="button-container"><button onclick="parolaKontrol()">Giriş Yap</button></div>
+  </div>
+</section>
+
+<section id="icerik" class="katman">
+  <div class="container">
+    <h2>Hoş Geldin, Kazanılmış Birey</h2>
+    <p>Bu özel alana ulaşman, sorumluluğu kabul ettiğini gösterir.<br>
+    Artık Manifesto-Global hareketinin gerçek parçasısın.</p>
+
+    <div class="yorum-alani">
+      <input type="text" id="isimInput" placeholder="Adınızı girin">
+      <textarea id="yorumInput" placeholder="Düşünceni paylaş..."></textarea>
+      <div class="button-container"><button onclick="yorumGonder()">Yorumu Gönder</button></div>
+      <div class="yorumlar-listesi" id="yorumlar"></div>
+    </div>
+
+    <div class="dipnot"><strong>Beyan:</strong> Bu platform barışçıl dijital farkındalık ve bilinç inşasını amaçlar.</div>
+  </div>
+</section>
 
 <script>
-// ✅ Butonların çalıştığını garantileyelim
-document.querySelectorAll("#langPanel button").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const lang = btn.textContent.toLowerCase(); // TR -> tr
-        setLanguage(lang);
-    });
+// ✅ Katman geçişleri
+function gecisYap(id){
+  document.querySelectorAll('.katman').forEach(k=>k.classList.remove('aktif'));
+  document.getElementById(id).classList.add('aktif');
+}
+
+// ✅ Giriş kontrol + LocalStorage hatırlama
+function parolaKontrol(){
+  const p=document.getElementById('parola').value;
+  if(p==="manifesto2025"){
+    localStorage.setItem("manifestoUser","true");
+    alert("Giriş başarılı!");
+    gecisYap('icerik');
+  } else alert("Parola hatalı!");
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  if(localStorage.getItem("manifestoUser")==="true"){gecisYap('icerik');}
 });
-</script>
-<script>
-// ✅ Butonları doğrudan fonksiyona bağla
-document.addEventListener("DOMContentLoaded", () => {
-   const trBtn = document.querySelector("#langPanel button:nth-child(1)");
-   const enBtn = document.querySelector("#langPanel button:nth-child(2)");
-   if(trBtn && enBtn) {
-       trBtn.onclick = () => setLanguage("tr");
-       enBtn.onclick = () => setLanguage("en");
-   }
-});
-</script>
-<!-- ✅ Dil Seçici için Son Dokunuş -->
-<style>
-#langPanel {
-  position: absolute;
-  top: 8px;
-  right: 20px;
-  z-index: 1000;
-}
-#langPanel button {
-  background: #00ffcc;
-  border: 1px solid #008866;
-  color: #000;
-  padding: 6px 10px;
-  margin-left: 3px;
-  font-weight: bold;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-#langPanel button:hover {
-  background: #00cc99;
-  color: #fff;
-}
-</style>
 
-<div id="langPanel">
-  <button onclick="setLanguage('tr')">TR</button>
-  <button onclick="setLanguage('en')">EN</button>
-</div>
-<script>
-// ✅ Dil seçici butonlarını manuel tetikle
-function dilTR() { setLanguage("tr"); }
-function dilEN() { setLanguage("en"); }
-</script>
+// ✅ İsimli Yorum Sistemi
+function yorumGonder(){
+  const isim=document.getElementById("isimInput").value.trim();
+  const yorum=document.getElementById("yorumInput").value.trim();
+  const yasakli=["küfür","hakaret","isyan","terör","salak","aptal"];
+  if(!isim){alert("Lütfen adınızı girin.");return;}
+  if(!yorum)return;
+  if(yasakli.some(k=>yorum.toLowerCase().includes(k))){alert("Yorum uygun değil.");return;}
 
-<!-- ✅ Sağdaki Paneli Direkt Bağlıyoruz -->
-<div id="langPanel">
-  <button onclick="dilTR()">TR</button>
-  <button onclick="dilEN()">EN</button>
-</div>
-<!-- 🔥 İsimli Yorum Sistemi Geliştirmesi -->
-<style>
-#isimInput {
-  width: 100%;
-  padding: 8px;
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-.yorumlar-listesi p strong {
-  color: #00ffcc;
-}
-</style>
+  const yorumlar=JSON.parse(localStorage.getItem("yorumlar")||"[]");
+  yorumlar.push({isim:isim,icerik:yorum,zaman:new Date().toLocaleString()});
+  localStorage.setItem("yorumlar",JSON.stringify(yorumlar));
 
-<script>
-// ✅ Yeni Yorum Gönderme Fonksiyonu
-function yorumGonder() {
-  const isim = document.getElementById("isimInput")?.value.trim();
-  const yorum = document.getElementById("yorumInput").value.trim();
-  const yasakli = ["küfür","hakaret","isyan","terör","salak","aptal"];
-
-  if (!isim) { alert("Lütfen isminizi girin."); return; }
-  if (!yorum) return;
-  if (yasakli.some(k => yorum.toLowerCase().includes(k))) { alert("Yorum uygun değil."); return; }
-
-  const yorumlar = JSON.parse(localStorage.getItem("yorumlar") || "[]");
-  yorumlar.push({ isim: isim, icerik: yorum, zaman: new Date().toLocaleString() });
-  localStorage.setItem("yorumlar", JSON.stringify(yorumlar));
-
-  document.getElementById("yorumInput").value = "";
-  document.getElementById("isimInput").value = "";
+  document.getElementById("isimInput").value="";
+  document.getElementById("yorumInput").value="";
   yorumlariGoster();
 }
 
-// ✅ Yorumları Listeleme
-function yorumlariGoster() {
-  const yorumlar = JSON.parse(localStorage.getItem("yorumlar") || "[]");
-  const container = document.getElementById("yorumlar");
-  container.innerHTML = "";
-  yorumlar.forEach(y => {
-    const p = document.createElement("p");
-    p.innerHTML = `<strong>${y.isim}</strong> [${y.zaman}]: ${y.icerik}`;
-    container.appendChild(p);
+function yorumlariGoster(){
+  const yorumlar=JSON.parse(localStorage.getItem("yorumlar")||"[]");
+  const c=document.getElementById("yorumlar");c.innerHTML="";
+  yorumlar.forEach(y=>{
+    const p=document.createElement("p");
+    p.innerHTML=`<strong>${y.isim}</strong> [${y.zaman}]: ${y.icerik}`;
+    c.appendChild(p);
   });
 }
-window.onload = yorumlariGoster;
+window.onload=yorumlariGoster;
 </script>
-
+</body>
+</html>
