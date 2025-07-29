@@ -325,4 +325,15 @@ document.querySelectorAll("#langPanel button").forEach(btn => {
     });
 });
 </script>
+<script>
+// ✅ Butonları doğrudan fonksiyona bağla
+document.addEventListener("DOMContentLoaded", () => {
+   const trBtn = document.querySelector("#langPanel button:nth-child(1)");
+   const enBtn = document.querySelector("#langPanel button:nth-child(2)");
+   if(trBtn && enBtn) {
+       trBtn.onclick = () => setLanguage("tr");
+       enBtn.onclick = () => setLanguage("en");
+   }
+});
+</script>
 
