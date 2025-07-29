@@ -183,3 +183,26 @@ function yorumDuzenle(index){
   }
 }
 </script>
+<!-- 🔥 Çıkış Butonu Modülü -->
+<script>
+function cikisYap(){
+  if(confirm("Çıkış yapmak istediğine emin misin?")){
+    localStorage.removeItem("manifestoUser");
+    alert("Çıkış yapıldı.");
+    gecisYap('giris');
+  }
+}
+
+// ✅ Çıkış butonu dinamik ekle
+document.addEventListener("DOMContentLoaded",()=>{
+  const icerik=document.querySelector("#icerik .container");
+  if(icerik && !document.getElementById("btnLogout")){
+    const btn=document.createElement("button");
+    btn.id="btnLogout";
+    btn.innerText="Çıkış Yap";
+    btn.style.cssText="margin-top:20px;padding:10px 15px;background:#ff4444;color:white;border:none;border-radius:5px;cursor:pointer;";
+    btn.onclick=cikisYap;
+    icerik.appendChild(btn);
+  }
+});
+</script>
