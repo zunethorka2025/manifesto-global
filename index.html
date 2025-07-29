@@ -258,3 +258,16 @@ function listeyiGoster(){
   }
 }
 </script>
+<!-- 🔥 Admin Paneli Modülü -->
+<script>
+function adminPanelAc(){
+  const adminPass = "admin2025"; // ✅ Admin şifresi (gerekirse değiştir)
+  const giris = prompt("Admin paneline giriş için şifreyi girin:");
+  if(giris !== adminPass){ alert("Hatalı şifre!"); return; }
+
+  // ✅ Panel Div oluştur
+  const container = document.querySelector("#icerik .container");
+  if(document.getElementById("adminPanel")) return; // Zaten açıksa tekrar ekleme
+  const panel = document.createElement("div");
+  panel.id = "adminPanel";
+  panel.style.cssText =
