@@ -376,4 +376,52 @@ function dilEN() { setLanguage("en"); }
   <button onclick="dilTR()">TR</button>
   <button onclick="dilEN()">EN</button>
 </div>
+<!-- 🔥 İsimli Yorum Sistemi Geliştirmesi -->
+<style>
+#isimInput {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.yorumlar-listesi p strong {
+  color: #00ffcc;
+}
+</style>
+
+<script>
+// ✅ Yeni Yorum Gönderme Fonksiyonu
+function yorumGonder() {
+  const isim = document.getElementById("isimInput")?.value.trim();
+  const yorum = document.getElementById("yorumInput").value.trim();
+  const yasakli = ["küfür","hakaret","isyan","terör","salak","aptal"];
+
+  if (!isim) { alert("Lütfen isminizi girin."); return; }
+  if (!yorum) return;
+  if (yasakli.some(k => yorum.toLowerCase().includes(k))) { alert("Yorum uygun değil."); return; }
+
+  const yorumlar = JSON.parse(localStorage.getItem("yorumlar") || "[]");
+  yorumlar.push({ isim: isim, icerik: yorum, zaman: new Date().toLocaleString() });
+  localStorage.setItem("yorumlar", JSON.stringify(yorumlar));
+
+  document.getElementById("yorumInput").value = "";
+  document.getElementById("isimInput").value = "";
+  yorumlariGoster();
+}
+
+// ✅ Yorumları Listeleme
+function yorumlariGoster() {
+  const yorumlar = JSON.parse(localStorage.getItem("yorumlar") || "[]");
+  const container = document.getElementById("yorumlar");
+  container.innerHTML = "";
+  yorumlar.forEach(y => {
+    const p = document.createElement("p");
+    p.innerHTML = `<strong>${y.isim}</strong> [${y.zaman}]: ${y.icerik}`;
+    container.appendChild(p);
+  });
+}
+window.onload = yorumlariGoster;
+</script>
 
