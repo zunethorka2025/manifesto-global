@@ -298,4 +298,31 @@ document.addEventListener("DOMContentLoaded", () => {
   <button onclick="setLanguage('tr')">TR</button>
   <button onclick="setLanguage('en')">EN</button>
 </div>
+<style>
+#langPanel button {
+  background: #00ffcc;
+  border: none;
+  color: #000;
+  padding: 6px 10px;
+  font-weight: bold;
+  border-radius: 3px;
+  margin-left: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#langPanel button:hover {
+  background: #00cc99;
+  color: #fff;
+}
+</style>
+
+<script>
+// ✅ Butonların çalıştığını garantileyelim
+document.querySelectorAll("#langPanel button").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const lang = btn.textContent.toLowerCase(); // TR -> tr
+        setLanguage(lang);
+    });
+});
+</script>
 
