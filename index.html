@@ -336,4 +336,33 @@ document.addEventListener("DOMContentLoaded", () => {
    }
 });
 </script>
+<!-- ✅ Dil Seçici için Son Dokunuş -->
+<style>
+#langPanel {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  z-index: 1000;
+}
+#langPanel button {
+  background: #00ffcc;
+  border: 1px solid #008866;
+  color: #000;
+  padding: 6px 10px;
+  margin-left: 3px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#langPanel button:hover {
+  background: #00cc99;
+  color: #fff;
+}
+</style>
+
+<div id="langPanel">
+  <button onclick="setLanguage('tr')">TR</button>
+  <button onclick="setLanguage('en')">EN</button>
+</div>
 
