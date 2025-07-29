@@ -146,3 +146,40 @@ window.onload=yorumlariGoster;
 </script>
 </body>
 </html>
+<!-- 🔥 Yorum Sil / Düzenle Modülü -->
+<script>
+function yorumlariGoster(){
+  const yorumlar=JSON.parse(localStorage.getItem("yorumlar")||"[]");
+  const container=document.getElementById("yorumlar");
+  container.innerHTML="";
+  yorumlar.forEach((y,i)=>{
+    const p=document.createElement("p");
+    p.innerHTML=`<strong>${y.isim}</strong> [${y.zaman}]: ${y.icerik} 
+    <button onclick="yorumSil(${i})">❌</button> 
+    <button onclick="yorumDuzenle(${i})">✏️</button>`;
+    container.appendChild(p);
+  });
+}
+
+// ✅ Yorum Sil
+function yorumSil(index){
+  const yorumlar=JSON.parse(localStorage.getItem("yorumlar")||"[]");
+  if(confirm("Bu yorumu silmek istiyor musun?")){
+    yorumlar.splice(index,1);
+    localStorage.setItem("yorumlar",JSON.stringify(yorumlar));
+    yorumlariGoster();
+  }
+}
+
+// ✅ Yorum Düzenle
+function yorumDuzenle(index){
+  const yorumlar=JSON.parse(localStorage.getItem("yorumlar")||"[]");
+  const yeni=prompt("Yorumu düzenle:",yorumlar[index].icerik);
+  if(yeni && yeni.trim()!==""){
+    yorumlar[index].icerik=yeni.trim();
+    yorumlar[index].zaman=new Date().toLocaleString(); // düzenleme zamanı
+    localStorage.setItem("yorumlar",JSON.stringify(yorumlar));
+    yorumlariGoster();
+  }
+}
+</script>
