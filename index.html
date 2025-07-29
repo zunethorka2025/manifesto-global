@@ -271,3 +271,56 @@ function adminPanelAc(){
   const panel = document.createElement("div");
   panel.id = "adminPanel";
   panel.style.cssText =
+<!-- 🔥 Admin Paneli (Login Sonrası Garantili) -->
+<script>
+function adminPanelAc(){
+  const adminPass = "admin2025"; // ✅ Admin şifresi
+  const giris = prompt("Admin paneline giriş için şifreyi girin:");
+  if(giris !== adminPass){ alert("Hatalı şifre!"); return; }
+
+  // ✅ Panel Div oluştur
+  const container = document.querySelector("#icerik .container");
+  if(document.getElementById("adminPanel")) return;
+  const panel = document.createElement("div");
+  panel.id = "adminPanel";
+  panel.style.cssText = "margin-top:30px;background:#333;color:#fff;padding:15px;border-radius:5px;";
+
+  // ✅ Liste
+  let bireyler = JSON.parse(localStorage.getItem("bireyler") || "[]");
+  let listeHTML = bireyler.length ? "<ul>" + bireyler.map(i=>`<li>${i}</li>`).join("") + "</ul>" : "<p>Henüz kayıtlı birey yok.</p>";
+
+  panel.innerHTML = `<h3>🛡️ Admin Paneli</h3>
+                     <div id='listeAlani'>${listeHTML}</div>
+                     <button id='listeSilBtn' style='background:red;color:white;padding:5px 10px;border:none;border-radius:3px;cursor:pointer;'>Tüm Listeyi Sil</button>`;
+
+  container.appendChild(panel);
+
+  // ✅ Listeyi Sil
+  document.getElementById("listeSilBtn").onclick = () => {
+    if(confirm("Tüm bireyler listesi silinsin mi?")){
+      localStorage.removeItem("bireyler");
+      document.getElementById("listeAlani").innerHTML = "<p>Liste temizlendi.</p>";
+    }
+  };
+}
+
+// ✅ Butonu sadece içerik aktifken ekle
+function adminButonEkle(){
+  const container=document.querySelector("#icerik .container");
+  if(container && !document.getElementById("btnAdmin")){
+    const btn=document.createElement("button");
+    btn.id="btnAdmin";
+    btn.innerText="Admin Paneli";
+    btn.style.cssText="margin-left:10px;padding:10px 15px;background:#ffaa00;color:#000;border:none;border-radius:5px;cursor:pointer;";
+    btn.onclick=adminPanelAc;
+    container.appendChild(btn);
+  }
+}
+
+// ✅ Login sonrası butonu garanti ekle
+document.addEventListener("DOMContentLoaded",()=>{
+  if(localStorage.getItem("manifestoUser")==="true"){
+    setTimeout(adminButonEkle,500); // içeriğin yüklenmesini bekle
+  }
+});
+</script>
