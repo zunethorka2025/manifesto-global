@@ -365,4 +365,15 @@ document.addEventListener("DOMContentLoaded", () => {
   <button onclick="setLanguage('tr')">TR</button>
   <button onclick="setLanguage('en')">EN</button>
 </div>
+<script>
+// ✅ Dil seçici butonlarını manuel tetikle
+function dilTR() { setLanguage("tr"); }
+function dilEN() { setLanguage("en"); }
+</script>
+
+<!-- ✅ Sağdaki Paneli Direkt Bağlıyoruz -->
+<div id="langPanel">
+  <button onclick="dilTR()">TR</button>
+  <button onclick="dilEN()">EN</button>
+</div>
 
