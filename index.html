@@ -218,3 +218,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+<!-- 🔥 Kazanılmış Birey Listesi Modülü -->
+<script>
+// ✅ Kullanıcıyı Kazanılmış Birey Listesine Ekle
+function bireyKaydet(){
+  const isim = localStorage.getItem("sonKullanici") || "Bilinmeyen";
+  let liste = JSON.parse(localStorage.getItem("bireyler") || "[]");
+
+  // Aynı isimde kayıt varsa tekrar ekleme
+  if(!liste.includes(isim)){
+    liste.push(isim);
+    localStorage.setItem("bireyler", JSON.stringify(liste));
+  }
+}
+
+// ✅ Login başarılı olduğunda son kullanıcıyı kaydet
+document.addEventListener("DOMContentLoaded", () => {
+  if(localStorage.getItem("manifestoUser") === "true"){
+    const sonKullanici = prompt("İsminizi doğrulamak için girin:");
+    if(sonKullanici){
+      localStorage.setItem("sonKullanici", sonKullanici);
+      bireyKaydet();
+    }
+    // Listeyi Göster
+    listeyiGoster();
+  }
+});
+
+// ✅ Listeyi Göster
+function listeyiGoster(){
+  const liste = JSON.parse(localStorage.getItem("bireyler") || "[]");
+  const container = document.querySelector("#icerik .container");
+  if(container && !document.getElementById("bireyListesi")){
+    const div = document.createElement("div");
+    div.id = "bireyListesi";
+    div.style.cssText = "margin-top:30px;background:#222;padding:10px;border-radius:5px;color:#00ffcc;";
+    div.innerHTML = "<h3>Kazanılmış Bireyler:</h3>" + (liste.length ? "<ul>" + liste.map(i=>`<li>${i}</li>`).join("") + "</ul>" : "<p>Henüz kimse eklenmedi.</p>");
+    container.appendChild(div);
+  }
+}
+</script>
